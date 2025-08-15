@@ -130,9 +130,9 @@ export function URLExtractor({ onURLsExtracted }: URLExtractorProps) {
     // Regex to match URLs in plain text
     const urlRegex = /(https?:\/\/(?:[-\w.])+(?:\:[0-9]+)?(?:\/(?:[\w\/_.])*(?:\?(?:[\w&=%.])*)?(?:\#(?:[\w.])*)?)?)/gi;
     
-    // Replace URLs with HTML anchor tags using black color
+    // Replace URLs with HTML anchor tags using blue color
     const htmlContent = text.replace(urlRegex, (url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #000000; text-decoration: underline;">${url}</a>`;
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #007AFF; text-decoration: underline;">${url}</a>`;
     });
     
     // Wrap in paragraph tags and preserve line breaks
@@ -157,7 +157,8 @@ export function URLExtractor({ onURLsExtracted }: URLExtractorProps) {
           const href = link.getAttribute('href');
           if (href) {
             link.textContent = href;
-            (link as HTMLElement).style.color = '#000000';
+            (link as HTMLElement).style.color = '#007AFF';
+            (link as HTMLElement).style.textDecoration = 'underline';
           }
         });
         setHasHtmlContent(true);
@@ -199,6 +200,13 @@ export function URLExtractor({ onURLsExtracted }: URLExtractorProps) {
         console.log('Converted plain text to HTML');
       }
       
+      // Update placeholder visibility
+      if (editor.textContent?.trim()) {
+        editor.classList.remove('empty');
+      } else {
+        editor.classList.add('empty');
+      }
+      
       // Clear previous results
       if (extractedUrls.length > 0) {
         setExtractedUrls([]);
@@ -219,8 +227,20 @@ export function URLExtractor({ onURLsExtracted }: URLExtractorProps) {
 
   const handleRichTextInput = (e: React.FormEvent<HTMLDivElement>) => {
     const content = e.currentTarget.innerHTML;
+    const textContent = e.currentTarget.textContent || '';
+    
     setInputContent(content);
     setError(null);
+    
+    // Update placeholder visibility
+    const editor = editorRef.current;
+    if (editor) {
+      if (textContent.trim() === '') {
+        editor.classList.add('empty');
+      } else {
+        editor.classList.remove('empty');
+      }
+    }
     
     // Check if content has HTML tags (indicating rich content)
     const hasHtml = /<[^>]*>/g.test(content);
