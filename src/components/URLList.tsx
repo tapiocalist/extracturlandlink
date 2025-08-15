@@ -105,8 +105,6 @@ export function URLList({ urls, onUrlsChange, onCopyAll, onOpenAll }: URLListPro
     const validUrls = urls.filter(url => url.isValid);
     
     if (validUrls.length === 0) {
-      setCopyFeedback('No valid URLs to open');
-      setTimeout(() => setCopyFeedback(null), 2000);
       return;
     }
 
@@ -120,34 +118,17 @@ export function URLList({ urls, onUrlsChange, onCopyAll, onOpenAll }: URLListPro
 
     // For multiple URLs, try to open them with a small delay
     const openUrls = async () => {
-      let openedCount = 0;
-      let blockedCount = 0;
-
       for (let i = 0; i < validUrls.length; i++) {
         try {
-          const newWindow = window.open(validUrls[i].url, '_blank', 'noopener,noreferrer');
-          if (newWindow) {
-            openedCount++;
-          } else {
-            blockedCount++;
-          }
+          window.open(validUrls[i].url, '_blank', 'noopener,noreferrer');
           
           // Small delay between opens to reduce blocking
           if (i < validUrls.length - 1) {
             await new Promise(resolve => setTimeout(resolve, 100));
           }
         } catch (error) {
-          blockedCount++;
+          // Silently handle errors
         }
-      }
-
-      // Show feedback
-      if (blockedCount > 0) {
-        setCopyFeedback(`Opened ${openedCount}/${validUrls.length} URLs. ${blockedCount} were blocked by browser. Please allow popups and try again.`);
-        setTimeout(() => setCopyFeedback(null), 8000);
-      } else {
-        setCopyFeedback(`Successfully opened all ${openedCount} URLs!`);
-        setTimeout(() => setCopyFeedback(null), 3000);
       }
     };
 
