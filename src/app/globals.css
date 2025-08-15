@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Modern Typography System */
+  html {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-apple-background text-apple-text;
+    line-height: 1.47059;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+  }
+
+  /* Apple Typography Scale */
+  h1 {
+    font-size: 3rem;
+    line-height: 1.08349;
+    font-weight: 600;
+    letter-spacing: -0.003em;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    line-height: 1.11111;
+    font-weight: 600;
+    letter-spacing: -0.002em;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    line-height: 1.14286;
+    font-weight: 600;
+    letter-spacing: -0.001em;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    line-height: 1.16667;
+    font-weight: 600;
+    letter-spacing: 0em;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.004em;
+  }
+
+  h6 {
+    font-size: 1.125rem;
+    line-height: 1.22222;
+    font-weight: 600;
+    letter-spacing: 0.009em;
+  }
+
+  /* Apple Link Styling - Simplified to Black */
+  a {
+    @apply text-black;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Focus styles for accessibility - Simplified to Yellow */
+  *:focus {
+    outline: 2px solid #FFD60A;
+    outline-offset: 2px;
+  }
+
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #FFD60A;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Apple Button System */
+  .btn-primary {
+    @apply bg-apple-yellow text-apple-text font-medium px-6 py-3 rounded-apple hover:bg-opacity-90 transition-all duration-200;
+    font-size: 1.0625rem;
+    line-height: 1.23529;
+    letter-spacing: -0.022em;
+    min-height: 44px; /* Apple's minimum touch target */
+  }
+  
+  .btn-secondary {
+    @apply bg-apple-gray text-white font-medium px-6 py-3 rounded-apple hover:bg-opacity-90 transition-all duration-200;
+    font-size: 1.0625rem;
+    line-height: 1.23529;
+    letter-spacing: -0.022em;
+    min-height: 44px;
+  }
+
+  .btn-outline {
+    @apply border-2 border-apple-gray text-apple-gray font-medium px-6 py-3 rounded-apple hover:bg-apple-gray hover:text-white transition-all duration-200;
+    font-size: 1.0625rem;
+    line-height: 1.23529;
+    letter-spacing: -0.022em;
+    min-height: 44px;
+  }
+
+  .btn-ghost {
+    @apply text-apple-gray font-medium px-6 py-3 rounded-apple hover:bg-apple-gray hover:bg-opacity-10 transition-all duration-200;
+    font-size: 1.0625rem;
+    line-height: 1.23529;
+    letter-spacing: -0.022em;
+    min-height: 44px;
+  }
+  
+  /* Apple Input System */
+  .input-field {
+    @apply w-full px-4 py-3 border border-apple-gray border-opacity-30 rounded-apple focus:outline-none focus:ring-2 focus:ring-apple-yellow focus:border-transparent;
+    font-size: 1.0625rem;
+    line-height: 1.23529;
+    letter-spacing: -0.022em;
+    min-height: 44px;
+  }
+  
+  .textarea-field {
+    @apply w-full px-4 py-3 border border-apple-gray border-opacity-30 rounded-apple focus:outline-none focus:ring-2 focus:ring-apple-yellow focus:border-transparent resize-none;
+    font-size: 1.0625rem;
+    line-height: 1.47059;
+    letter-spacing: -0.022em;
+    min-height: 120px;
+  }
+
+  /* Apple Card System */
+  .card {
+    @apply bg-white rounded-apple shadow-sm border border-apple-gray border-opacity-20;
+    backdrop-filter: blur(20px);
+  }
+
+  .card-elevated {
+    @apply bg-white rounded-apple shadow-lg border border-apple-gray border-opacity-10;
+    backdrop-filter: blur(20px);
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    .card {
+      @apply rounded-lg; /* Smaller border radius on mobile */
+    }
+    
+    .card-elevated {
+      @apply rounded-lg;
+    }
+  }
+
+  /* Apple Spacing System (8px grid) */
+  .space-apple-xs { @apply space-y-2; } /* 8px */
+  .space-apple-sm { @apply space-y-3; } /* 12px */
+  .space-apple-md { @apply space-y-4; } /* 16px */
+  .space-apple-lg { @apply space-y-6; } /* 24px */
+  .space-apple-xl { @apply space-y-8; } /* 32px */
+  .space-apple-2xl { @apply space-y-12; } /* 48px */
+
+  /* Apple Container System */
+  .container-apple {
+    @apply max-w-6xl mx-auto px-4 sm:px-6;
+  }
+
+  .container-apple-sm {
+    @apply max-w-2xl mx-auto px-4 sm:px-6;
+  }
+
+  .container-apple-xs {
+    @apply max-w-lg mx-auto px-4 sm:px-6;
+  }
+
+  /* Apple Status Colors */
+  .text-success { @apply text-green-600; }
+  .text-warning { @apply text-orange-600; }
+  .text-error { @apply text-red-600; }
+  .text-info { @apply text-blue-600; }
+
+  .bg-success { @apply bg-green-50 border-green-200; }
+  .bg-warning { @apply bg-orange-50 border-orange-200; }
+  .bg-error { @apply bg-red-50 border-red-200; }
+  .bg-info { @apply bg-blue-50 border-blue-200; }
+
+  /* Prose styles for HTML content display */
+  .prose-apple {
+    @apply text-apple-text;
+    line-height: 1.47059;
+    letter-spacing: -0.022em;
+  }
+
+  .prose-apple a {
+    @apply text-black;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .prose-apple a:hover {
+    text-decoration: underline;
+  }
+
+  .prose-apple p {
+    margin-bottom: 1em;
+  }
+
+  .prose-apple p:last-child {
+    margin-bottom: 0;
+  }
+
+  .prose-apple strong,
+  .prose-apple b {
+    font-weight: 600;
+  }
+
+  .prose-apple em,
+  .prose-apple i {
+    font-style: italic;
+  }
+
+  .prose-apple ul,
+  .prose-apple ol {
+    margin: 1em 0;
+    padding-left: 1.5em;
+  }
+
+  .prose-apple li {
+    margin-bottom: 0.5em;
+  }
+
+  .prose-apple table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+  }
+
+  .prose-apple th,
+  .prose-apple td {
+    border: 1px solid #e5e5e7;
+    padding: 0.5em 1em;
+    text-align: left;
+  }
+
+  .prose-apple th {
+    background-color: #f5f5f7;
+    font-weight: 600;
+  }
+
+  /* Rich text editor placeholder */
+  [contenteditable].empty:before {
+    content: attr(data-placeholder);
+    color: #8E8E93;
+    opacity: 0.6;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  [contenteditable]:focus {
+    outline: none;
+  }
+
+  /* Ensure links in contenteditable are clickable and styled - Simplified to Black */
+  [contenteditable] a {
+    color: #000000;
+    text-decoration: underline;
+    pointer-events: auto;
+  }
+
+  [contenteditable] a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile touch optimizations */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Prevent zoom on input focus for iOS */
+  @media screen and (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    textarea,
+    [contenteditable] {
+      font-size: 16px !important;
+    }
+  }
+
+  /* Responsive typography adjustments */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2.25rem; /* Smaller on mobile */
+      line-height: 1.11111;
+    }
+
+    h2 {
+      font-size: 1.875rem;
+      line-height: 1.13333;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      line-height: 1.16667;
+    }
+
+    .text-apple-large-title {
+      font-size: 1.875rem !important;
+      line-height: 1.13333 !important;
+    }
+
+    .text-apple-title1 {
+      font-size: 1.5rem !important;
+      line-height: 1.16667 !important;
+    }
+
+    .text-apple-title2 {
+      font-size: 1.25rem !important;
+      line-height: 1.2 !important;
+    }
+
+    .text-apple-title3 {
+      font-size: 1.125rem !important;
+      line-height: 1.22222 !important;
+    }
+  }
+}
