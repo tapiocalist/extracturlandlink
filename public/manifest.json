@@ -1,0 +1,21 @@
+{
+  "name": "extracturl.link - URL Extractor Tool",
+  "short_name": "URL Extractor",
+  "description": "Extract URLs from hyperlinked text content - Google Sheets, documents, emails and more",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FFD60A",
+  "icons": [
+    {
+      "src": "/icon",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

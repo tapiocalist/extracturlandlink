@@ -67,7 +67,7 @@ export default function Home() {
         <div className="container-apple py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-6 tracking-tight">
-              extracturl.link
+              Extract URL and Links
             </h1>
             <p className="text-xl text-content-gray mb-6 sm:mb-8 leading-relaxed">
               Transform messy hyperlinked content into organized, manageable URL lists in seconds

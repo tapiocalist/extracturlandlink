@@ -52,8 +52,8 @@ export default function Navigation() {
                   onClick={() => handleNavClick(item.label.toLowerCase())}
                   className={`px-3 py-2 rounded-apple-sm text-apple-body font-medium transition-all duration-200 ${
                     isActive(item.href)
-                      ? 'bg-apple-yellow/20 text-apple-yellow border border-apple-yellow/30'
-                      : 'text-apple-yellow hover:text-apple-yellow hover:bg-apple-yellow/10'
+                      ? 'bg-apple-yellow/20 text-black border border-apple-yellow/30'
+                      : 'text-black hover:text-black hover:bg-apple-yellow/10'
                   }`}
                 >
                   {item.label}
@@ -117,8 +117,8 @@ export default function Navigation() {
               onClick={() => handleNavClick(item.label.toLowerCase())}
               className={`block px-3 py-2 rounded-apple-sm text-apple-body font-medium transition-all duration-200 ${
                 isActive(item.href)
-                  ? 'bg-apple-yellow/20 text-apple-yellow border border-apple-yellow/30'
-                  : 'text-apple-yellow hover:text-apple-yellow hover:bg-apple-yellow/10'
+                  ? 'bg-apple-yellow/20 text-black border border-apple-yellow/30'
+                  : 'text-black hover:text-black hover:bg-apple-yellow/10'
               }`}
             >
               {item.label}
