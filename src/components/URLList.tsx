@@ -104,58 +104,56 @@ export function URLList({ urls, onUrlsChange, onCopyAll, onOpenAll }: URLListPro
 
     const validUrls = urls.filter(url => url.isValid);
     
+    if (validUrls.length === 0) {
+      setCopyFeedback('No valid URLs to open');
+      setTimeout(() => setCopyFeedback(null), 2000);
+      return;
+    }
+
     if (validUrls.length === 1) {
-      // Just open the single URL without switching focus
-      const newWindow = window.open(validUrls[0].url, '_blank', 'noopener,noreferrer');
-      
-      // Multiple approaches to keep focus on current window
-      setTimeout(() => {
-        if (newWindow) {
-          newWindow.blur(); // Remove focus from new window
-        }
-        window.focus();   // Keep focus on current window
-        document.body.focus(); // Additional focus on body
-      }, 10);
-      
+      // Just open the single URL
+      window.open(validUrls[0].url, '_blank', 'noopener,noreferrer');
       onOpenAll();
-      
-      // Track URL opening
       trackURLOpen(1, 'single');
       return;
     }
 
-    // For multiple URLs, show options to user
-    const message = `You have ${validUrls.length} URLs to open. Choose an option:\n\n` +
-      `OK - Open first URL now, then show popup blocker instructions\n` +
-      `Cancel - Copy all URLs to clipboard instead`;
-    
-    const confirmed = window.confirm(message);
-    
-    if (confirmed) {
-      // Open first URL without switching focus
-      const newWindow = window.open(validUrls[0].url, '_blank', 'noopener,noreferrer');
-      
-      // Multiple approaches to keep focus on current window
-      setTimeout(() => {
-        if (newWindow) {
-          newWindow.blur(); // Remove focus from new window
+    // For multiple URLs, try to open them with a small delay
+    const openUrls = async () => {
+      let openedCount = 0;
+      let blockedCount = 0;
+
+      for (let i = 0; i < validUrls.length; i++) {
+        try {
+          const newWindow = window.open(validUrls[i].url, '_blank', 'noopener,noreferrer');
+          if (newWindow) {
+            openedCount++;
+          } else {
+            blockedCount++;
+          }
+          
+          // Small delay between opens to reduce blocking
+          if (i < validUrls.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+          }
+        } catch (error) {
+          blockedCount++;
         }
-        window.focus();   // Keep focus on current window
-        document.body.focus(); // Additional focus on body
-      }, 10);
-      
-      // Show instructions for remaining URLs
-      setCopyFeedback(`Opened first URL. Click individual URLs below to open the rest, or use "Copy All URLs" to copy them.`);
-      setTimeout(() => setCopyFeedback(null), 6000);
-      
-      onOpenAll();
-      
-      // Track URL opening
-      trackURLOpen(validUrls.length, 'all');
-    } else {
-      // User chose to copy instead
-      handleCopyAllUrls();
-    }
+      }
+
+      // Show feedback
+      if (blockedCount > 0) {
+        setCopyFeedback(`Opened ${openedCount}/${validUrls.length} URLs. ${blockedCount} were blocked by browser. Please allow popups and try again.`);
+        setTimeout(() => setCopyFeedback(null), 8000);
+      } else {
+        setCopyFeedback(`Successfully opened all ${openedCount} URLs!`);
+        setTimeout(() => setCopyFeedback(null), 3000);
+      }
+    };
+
+    openUrls();
+    onOpenAll();
+    trackURLOpen(validUrls.length, 'all');
   };
 
   if (urls.length === 0) {
@@ -204,6 +202,25 @@ export function URLList({ urls, onUrlsChange, onCopyAll, onOpenAll }: URLListPro
         </Button>
       </div>
 
+      {/* Popup Blocker Warning */}
+      {urls.filter(url => url.isValid).length > 1 && (
+        <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <div className="flex items-start gap-2">
+            <svg className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 15.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+            <div className="text-sm">
+              <p className="font-medium text-yellow-800 mb-1">
+                Multiple URLs detected
+              </p>
+              <p className="text-yellow-700">
+                Opening multiple URLs may be blocked by your browser. If some URLs don't open, please allow popups for this site and try again. You can also click individual URLs below to open them one by one.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* URL List */}
       <div className="space-y-3">
         {urls.map((urlData) => (
@@ -247,7 +264,8 @@ export function URLList({ urls, onUrlsChange, onCopyAll, onOpenAll }: URLListPro
                   href={urlData.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-black hover:underline text-apple-callout break-all flex-1"
+                  className="text-blue-600 hover:text-blue-800 hover:underline text-apple-callout break-all flex-1"
+                  onClick={() => trackURLOpen(1, 'single')}
                 >
                   {urlData.url}
                 </a>
