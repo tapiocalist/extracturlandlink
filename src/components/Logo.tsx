@@ -44,7 +44,7 @@ export function Logo({ className = '', showText = true }: LogoProps) {
       {/* Logo Text */}
       {showText && (
         <span className="text-xl font-bold text-black">
-          extracturl.link
+          URL Extractor
         </span>
       )}
     </Link>

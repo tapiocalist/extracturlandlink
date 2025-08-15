@@ -8,7 +8,7 @@ import { BrowserCompatibilityChecker } from '@/components/BrowserCompatibilityCh
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'extracturl.link - URL Extractor Tool',
+  title: 'URL Extractor',
   description: 'Extract URLs from hyperlinked text content - Google Sheets, documents, emails and more',
   keywords: ['URL extractor', 'link extractor', 'Google Sheets', 'hyperlinks', 'URL parser'],
   authors: [{ name: 'extracturl.link' }],
