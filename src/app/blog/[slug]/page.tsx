@@ -6,13 +6,14 @@ import { notFound } from 'next/navigation'
 import { getPostBySlug } from '@/lib/blog/posts'
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug)
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
   
   if (!post) {
     notFound()
