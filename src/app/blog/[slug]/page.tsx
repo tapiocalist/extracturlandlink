@@ -3,8 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts'
-import { BlogCard } from '@/components/blog/BlogCard'
+import { getPostBySlug } from '@/lib/blog/posts'
 
 interface BlogPostPageProps {
   params: {
@@ -18,8 +17,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound()
   }
-
-  const relatedPosts = getRelatedPosts(post.slug, post.tags)
 
   // Simple markdown-like rendering (you could use a proper markdown parser)
   const renderContent = (content: string) => {
@@ -84,17 +81,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </Link>
             </nav>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-apple-yellow text-black"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+
 
             {/* Title */}
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-6 tracking-tight">
@@ -108,9 +95,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Meta Info */}
             <div className="flex items-center gap-6 text-content-gray">
-              <span>By {post.author}</span>
               <span>{new Date(post.date).toLocaleDateString()}</span>
-              <span>{post.readTime} min read</span>
             </div>
           </div>
         </div>
@@ -129,23 +114,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </section>
 
-      {/* Related Posts */}
-      {relatedPosts.length > 0 && (
-        <section className="py-16 bg-white/80 backdrop-blur-sm">
-          <div className="container-apple">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl font-bold text-black mb-12 text-center">
-                Related Posts
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {relatedPosts.map((relatedPost) => (
-                  <BlogCard key={relatedPost.slug} post={relatedPost} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+
     </main>
   )
 }

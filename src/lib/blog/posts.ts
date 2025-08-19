@@ -1,266 +1,88 @@
 import { BlogPost, BlogPostMeta } from './types'
 
-// 示例博客文章数据
+// 简单的博客文章数据
 const blogPosts: BlogPost[] = [
   {
-    slug: 'getting-started-with-url-extractor',
-    title: 'Getting Started with URL Extractor',
-    description: 'Learn how to extract URLs from Google Sheets, documents, and other sources quickly and efficiently.',
+    slug: 'how-to-extract-urls-from-google-sheets',
+    title: 'How to Extract URLs from Google Sheets',
+    description: 'A simple guide to extract hyperlinks from Google Sheets using URL Extractor.',
     content: `
-# Getting Started with URL Extractor
+# How to Extract URLs from Google Sheets
 
-URL Extractor is a powerful tool designed to help you extract and manage URLs from various sources. Whether you're working with Google Sheets, Word documents, or emails, this guide will help you get started.
+Google Sheets often contains hyperlinked text that you need to extract as plain URLs. Here's how to do it easily.
 
-## What is URL Extractor?
+## Step 1: Copy Your Content
 
-URL Extractor automatically detects and extracts hyperlinks from any content you paste. It's perfect for:
+Select the cells in Google Sheets that contain hyperlinks and copy them (Ctrl+C or Cmd+C).
 
-- **Researchers** organizing reference links
-- **Marketers** managing campaign URLs
-- **Content creators** collecting source materials
-- **Data analysts** processing spreadsheet data
+## Step 2: Paste into URL Extractor
 
-## How to Use URL Extractor
+Go to URL Extractor and paste your content into the text area. Make sure to use Ctrl+V to preserve the hyperlink formatting.
 
-### Step 1: Paste Your Content
-Simply paste any hyperlinked content into the text area. The tool supports:
-- Google Sheets cells with hyperlinks
-- Word document text
-- Email content
-- Web page selections
+## Step 3: Extract URLs
 
-### Step 2: Extract URLs
-Click the "GET URL" button to automatically extract all URLs from your content. The tool will:
-- Detect embedded hyperlinks
-- Preserve display text
-- Validate URL formats
-- Organize results clearly
+Click the "GET URL" button. The tool will automatically detect all hyperlinks and extract the URLs for you.
 
-### Step 3: Manage Your URLs
-Once extracted, you can:
-- Edit display names
+## Step 4: Manage Your URLs
+
+You can now:
+- Edit the display names
 - Copy individual URLs
 - Copy all URLs at once
-- Open multiple URLs
 - Delete unwanted links
 
-## Tips for Best Results
+## Tips
 
-1. **Preserve Formatting**: Use Ctrl+V to paste content and maintain hyperlink formatting
-2. **Check Results**: Review extracted URLs for accuracy
-3. **Organize**: Use the edit feature to create meaningful display names
-4. **Batch Operations**: Use "Copy All URLs" for efficiency
+- Always use Ctrl+V when pasting to preserve hyperlinks
+- If links appear as plain text, use the "Convert URLs to Links" button
+- The tool works completely offline - your data stays private
 
-## Privacy and Security
-
-URL Extractor processes all content locally in your browser. Your data never leaves your device, ensuring complete privacy and security.
-
-## Conclusion
-
-URL Extractor streamlines the process of managing multiple URLs, saving you time and reducing manual work. Try it today and experience the difference!
+That's it! You now have all your URLs extracted and organized.
     `,
     date: '2024-01-15',
-    author: 'URL Extractor Team',
-    tags: ['tutorial', 'getting-started', 'guide'],
-    readTime: 5,
-    featured: true,
     published: true
   },
   {
-    slug: 'advanced-url-extraction-tips',
-    title: 'Advanced URL Extraction Tips and Tricks',
-    description: 'Discover advanced techniques for extracting URLs from complex documents and handling edge cases.',
+    slug: 'extract-urls-from-word-documents',
+    title: 'Extract URLs from Word Documents',
+    description: 'Learn how to quickly extract all hyperlinks from Microsoft Word documents.',
     content: `
-# Advanced URL Extraction Tips and Tricks
+# Extract URLs from Word Documents
 
-Take your URL extraction skills to the next level with these advanced techniques and best practices.
+Word documents often contain many hyperlinks. Here's how to extract them all at once.
 
-## Working with Complex Documents
+## Method 1: Copy and Paste
 
-### Google Sheets Advanced Features
-When working with Google Sheets, you might encounter:
-- **Merged cells** with multiple URLs
-- **Formula-generated links** 
-- **Conditional formatting** affecting display
+1. Select all text in your Word document (Ctrl+A)
+2. Copy the text (Ctrl+C)
+3. Paste into URL Extractor (Ctrl+V)
+4. Click "GET URL" to extract all links
 
-**Pro Tip**: Copy the entire range and paste it as a single block for best results.
+## Method 2: Section by Section
 
-### Microsoft Office Documents
-For Word and Excel documents:
-- Use "Paste Special" → "Keep Source Formatting"
-- Handle embedded objects carefully
-- Watch for hidden hyperlinks in images
+If your document is large:
+1. Copy one section at a time
+2. Paste and extract URLs
+3. Repeat for each section
+4. Combine all results
 
-## Handling Edge Cases
+## What Gets Extracted
 
-### Mixed Content Types
-When your content contains both plain URLs and hyperlinked text:
-1. Paste the content normally
-2. Use "Convert URLs to Links" for plain text URLs
-3. Review and organize the combined results
+URL Extractor will find:
+- Regular hyperlinks
+- Email addresses (mailto links)
+- File links
+- Internal document links
 
-### International URLs
-URL Extractor handles international domains and Unicode characters:
-- IDN (Internationalized Domain Names)
-- Non-ASCII characters in paths
-- Various URL schemes (http, https, ftp, etc.)
+## Best Practices
 
-### Large Datasets
-For processing large amounts of URLs:
-- Break content into smaller chunks
-- Use batch operations efficiently
-- Monitor browser performance
+- Use "Paste Special" → "Keep Source Formatting" if regular paste doesn't work
+- Check the extracted URLs for accuracy
+- Remove any unwanted internal links
 
-## Productivity Workflows
-
-### Research Workflow
-1. Collect sources in a Google Sheet
-2. Extract all URLs at once
-3. Organize by topic or priority
-4. Export for reference management
-
-### Marketing Campaign Management
-1. Gather campaign URLs from various sources
-2. Extract and validate all links
-3. Check for duplicates
-4. Organize by campaign type
-
-### Content Curation
-1. Extract URLs from multiple articles
-2. Edit display names for clarity
-3. Group by category
-4. Export for content planning
-
-## Browser Optimization
-
-### Popup Blocker Settings
-To open multiple URLs efficiently:
-- Allow popups for the URL Extractor site
-- Use "Open URLs" feature for batch opening
-- Consider browser tab limits
-
-### Performance Tips
-- Clear browser cache regularly
-- Close unnecessary tabs before processing
-- Use incognito mode for sensitive content
-
-## Troubleshooting Common Issues
-
-### URLs Not Detected
-If URLs aren't being detected:
-- Check if content has actual hyperlinks
-- Try "Convert URLs to Links" for plain text
-- Verify URL format validity
-
-### Formatting Issues
-For formatting problems:
-- Use Ctrl+V instead of right-click paste
-- Check source document formatting
-- Try copying smaller sections
-
-### Browser Compatibility
-URL Extractor works best with:
-- Chrome (latest version)
-- Firefox (latest version)
-- Safari (latest version)
-- Edge (latest version)
-
-## Security Best Practices
-
-### Safe URL Handling
-- Always verify URLs before opening
-- Be cautious with shortened URLs
-- Check domain reputation
-- Use antivirus protection
-
-### Privacy Considerations
-- All processing happens locally
-- No data is sent to external servers
-- Clear browser data after sensitive work
-- Use private browsing when needed
-
-## Conclusion
-
-These advanced techniques will help you handle complex URL extraction scenarios efficiently. Remember that practice makes perfect – the more you use these features, the more proficient you'll become.
-
-Happy extracting!
+This method works for any document with hyperlinks!
     `,
     date: '2024-01-10',
-    author: 'URL Extractor Team',
-    tags: ['advanced', 'tips', 'productivity', 'workflow'],
-    readTime: 8,
-    featured: false,
-    published: true
-  },
-  {
-    slug: 'url-extractor-for-researchers',
-    title: 'URL Extractor for Academic Researchers',
-    description: 'How academic researchers can use URL Extractor to manage citations, references, and research sources efficiently.',
-    content: `
-# URL Extractor for Academic Researchers
-
-Academic research often involves managing hundreds of online sources. URL Extractor can streamline your research workflow significantly.
-
-## Research Workflow Integration
-
-### Literature Review Process
-1. **Source Collection**: Gather URLs from databases, journals, and repositories
-2. **Organization**: Extract and categorize by research topic
-3. **Citation Management**: Prepare URLs for reference managers
-4. **Collaboration**: Share organized link collections with team members
-
-### Database Research
-When working with academic databases:
-- Extract URLs from search results
-- Organize by relevance or date
-- Prepare for citation software import
-- Maintain backup link collections
-
-## Best Practices for Researchers
-
-### Source Verification
-- Always verify URL accessibility
-- Check for paywall restrictions
-- Note access dates for citations
-- Maintain backup copies when possible
-
-### Organization Strategies
-- Use descriptive display names
-- Group by research theme
-- Tag by methodology or field
-- Maintain chronological order
-
-### Collaboration Features
-- Share extracted URL lists with colleagues
-- Coordinate research efforts
-- Avoid duplicate source collection
-- Maintain team bibliographies
-
-## Integration with Research Tools
-
-### Reference Managers
-URL Extractor works well with:
-- Zotero
-- Mendeley
-- EndNote
-- RefWorks
-
-### Note-Taking Apps
-Export URLs to:
-- Notion
-- Obsidian
-- Roam Research
-- OneNote
-
-## Conclusion
-
-URL Extractor can significantly improve your research efficiency by automating the tedious task of URL management and organization.
-    `,
-    date: '2024-01-05',
-    author: 'Dr. Sarah Chen',
-    tags: ['research', 'academic', 'workflow', 'productivity'],
-    readTime: 6,
-    featured: false,
     published: true
   }
 ]
@@ -273,38 +95,7 @@ export function getAllPosts(): BlogPostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
-// 获取特色文章
-export function getFeaturedPosts(): BlogPostMeta[] {
-  return getAllPosts().filter(post => post.featured)
-}
-
 // 根据 slug 获取单篇文章
 export function getPostBySlug(slug: string): BlogPost | null {
   return blogPosts.find(post => post.slug === slug && post.published) || null
-}
-
-// 获取相关文章
-export function getRelatedPosts(currentSlug: string, tags: string[], limit: number = 3): BlogPostMeta[] {
-  return getAllPosts()
-    .filter(post => 
-      post.slug !== currentSlug && 
-      post.tags.some(tag => tags.includes(tag))
-    )
-    .slice(0, limit)
-}
-
-// 根据标签获取文章
-export function getPostsByTag(tag: string): BlogPostMeta[] {
-  return getAllPosts().filter(post => post.tags.includes(tag))
-}
-
-// 获取所有标签
-export function getAllTags(): string[] {
-  const tags = new Set<string>()
-  blogPosts.forEach(post => {
-    if (post.published) {
-      post.tags.forEach(tag => tags.add(tag))
-    }
-  })
-  return Array.from(tags).sort()
 }

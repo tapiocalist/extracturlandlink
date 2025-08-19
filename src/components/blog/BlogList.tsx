@@ -4,7 +4,7 @@ import React from 'react'
 import { BlogCard } from './BlogCard'
 import { BlogListProps } from '@/lib/blog/types'
 
-export function BlogList({ posts, featured = false }: BlogListProps) {
+export function BlogList({ posts }: BlogListProps) {
   if (posts.length === 0) {
     return (
       <div className="text-center py-12">
@@ -16,11 +16,7 @@ export function BlogList({ posts, featured = false }: BlogListProps) {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {posts.map((post) => (
-        <BlogCard 
-          key={post.slug} 
-          post={post} 
-          featured={featured && post.featured}
-        />
+        <BlogCard key={post.slug} post={post} />
       ))}
     </div>
   )
