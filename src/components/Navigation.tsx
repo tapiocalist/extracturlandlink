@@ -14,6 +14,7 @@ export default function Navigation() {
   const navItems = [
     { href: '/' as const, label: 'Home' },
     { href: '/about' as const, label: 'About' },
+    { href: '/blog' as const, label: 'Blog' },
     { href: '/contact' as const, label: 'Contact' },
   ]
 

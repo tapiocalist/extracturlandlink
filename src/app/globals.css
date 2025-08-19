@@ -306,6 +306,58 @@
     }
   }
 
+  /* Blog content styles */
+  .prose {
+    color: inherit;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    color: #000000;
+    font-weight: 600;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5em;
+  }
+
+  .prose li {
+    margin-bottom: 0.5em;
+  }
+
+  .prose strong {
+    color: #000000;
+    font-weight: 600;
+  }
+
+  .prose code {
+    background-color: #f5f5f7;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25em;
+    font-size: 0.875em;
+  }
+
+  .prose blockquote {
+    border-left: 4px solid #FFD60A;
+    padding-left: 1em;
+    margin: 1.5em 0;
+    font-style: italic;
+    color: #444141;
+  }
+
+  /* Line clamp utility */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   /* Responsive typography adjustments */
   @media (max-width: 640px) {
     h1 {
